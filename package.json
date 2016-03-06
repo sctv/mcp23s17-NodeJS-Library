@@ -1,0 +1,60 @@
+{
+  "name": "mcp23s17",
+  "version": "1.0.12",
+  "description": "modul to easy communicate with the io-expander mcp23s17",
+  "main": "index.js",
+  "dependencies": {
+    "spi": "0.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test.js"
+  },
+  "keywords": [
+    "spi",
+    "io",
+    "interrupt",
+    "expander",
+    "gpio",
+    "msc23s17",
+    "23s17"
+  ],
+  "author": {
+    "name": "Christopher Koch"
+  },
+  "license": "ISC",
+  "_id": "mcp23s17@1.0.9",
+  "_shasum": "98a9277e7da4a16fa9d4803230f6a4a53211f260",
+  "_from": "mcp23s17@latest",
+  "_npmVersion": "2.14.2",
+  "_nodeVersion": "4.0.0",
+  "_npmUser": {
+    "name": "codes_koch",
+    "email": "chris@koch.codes"
+  },
+  "dist": {
+    "shasum": "98a9277e7da4a16fa9d4803230f6a4a53211f260",
+    "tarball": "http://registry.npmjs.org/mcp23s17/-/mcp23s17-1.0.9.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "codes_koch",
+      "email": "chris@koch.codes"
+    }
+  ],
+  "_npmOperationalInternal": {
+    "host": "packages-13-west.internal.npmjs.com",
+    "tmp": "tmp/mcp23s17-1.0.9.tgz_1456944057107_0.7396451930981129"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/mcp23s17/-/mcp23s17-1.0.9.tgz",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kochchri/node-mcp23s17.git"
+  },
+  "gitHead": "7a518b97ec00d5dbbd77a47c4c08bb9028739a3b",
+  "bugs": {
+    "url": "https://github.com/Kochchri/node-mcp23s17/issues"
+  },
+  "homepage": "https://github.com/Kochchri/node-mcp23s17#readme"
+}
