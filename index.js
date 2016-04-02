@@ -41,6 +41,7 @@ var SLAVE = function( h_address, parent ){
 	this.io =         [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 	this.dir =        [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];	
 	this.interrupts = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+	this.pull = 	  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 }
 
 SLAVE.prototype.addInterrupt = function( pin, callback ){
@@ -68,6 +69,16 @@ SLAVE.prototype.directions = function( dir ){
 		this.dir = dir;
 	}
 }
+
+/*
+SLAVE.prototype.pullDirection = dunction( pull ){
+	if( pull = null ){
+		return this.pull;
+	} else {
+		this.pull = pull;
+	}
+}
+*/
 
 SLAVE.prototype.write = function(){
 	// creating output for bank A
@@ -223,21 +234,35 @@ MCP23S17.prototype.connect = function(){
 	// init all ports as output
 	for( var i = 0; i < this.slaves.length; i ++ ){
 		var dirA = 0x00;
+		// var pullA = 0x00;
 		for( var j = 7; j >= 0; j-- ){
 			dirA = dirA | this.slaves[i].dir[j];
-			if( j != 0 )
+			//pullA = pullA | this.slaves[i].pull[j];
+			if( j != 0 ){
 				dirA = dirA << 1;
+				//pullA = pullA << 1;
+			}
 		}
 		var dirB = 0x00;
+		// var pullB = 0x00;
 		for( var j = 15; j >= 8; j-- ){
+			//pullB = pullB | this.slaves[i].pull[j];
 			dirB = dirB | this.slaves[i].dir[j];
-			if( j != 8 )
+			if( j != 8 ){
 				dirB = dirB << 1;
+				//pullB = pullB << 1;
+			}
 		}
 		rxBuffer = new Buffer( [ this.slaves[i].address | WRITE, IODIRA, dirA ] );
         	this.spi.write( rxBuffer, function( d, v ){});
         	rxBuffer = new Buffer( [ this.slaves[i].address | WRITE, IODIRB, dirB ] );
         	this.spi.write( rxBuffer, function( d, v ){});
+        	/*
+        	rxBuffer = new Buffer( [ this.slaves[i].address | WRITE, GPPUA, pullA ] );
+        	this.spi.write( rxBuffer, function( d, v ){});
+        	rxBuffer = new Buffer( [ this.slaves[i].address | WRITE, GPPUB, pullB ] );
+        	this.spi.write( rxBuffer, function( d, v ){});
+        	*/
 	}
 }
 
